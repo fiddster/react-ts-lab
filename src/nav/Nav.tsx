@@ -7,6 +7,7 @@ export const Nav = () => {
         <nav className="flex-row align-center">
             <NavLink to={paths.home} name="Home" />
             <NavLink to={paths.lab} name="Lab" />
+            <NavLink to={paths.initiativeTracker} name="Initiative Tracker" />
         </nav>
 
     )

@@ -1,6 +1,7 @@
 {
     "paths":{
         "home": "/",
-        "lab": "/lab"
+        "lab": "/lab",
+        "initiativeTracker": "/initiativetracker"
     }
 }
