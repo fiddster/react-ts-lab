@@ -1,13 +1,13 @@
 import React from 'react'
-import { paths } from "../routes/paths.json";
+import { routes } from "../routes/routes.json";
 import { NavLink } from './navlink/NavLink'
 
 export const Nav = () => {
     return (
         <nav className="flex-row align-center">
-            <NavLink to={paths.home} name="Home" />
-            <NavLink to={paths.lab} name="Lab" />
-            <NavLink to={paths.initiativeTracker} name="Initiative Tracker" />
+            <NavLink to={routes.home} name="Home" />
+            <NavLink to={routes.lab} name="Lab" />
+            <NavLink to={routes.initiativeTracker} name="Initiative Tracker" />
         </nav>
 
     )

@@ -1,0 +1,132 @@
+{
+    "buffs": [
+        {
+            "name":"incAccuracy",
+            "imgSrc":"Buff_Increased_Accuracy.jpeg"
+        },
+        {
+            "name":"incCritical",
+            "imgSrc":"Buff_Increased_Critical.jpeg"
+        },
+        {
+            "name":"incElementalAttack",
+            "imgSrc":"Buff_Increased_Elemental_Attack.jpeg"
+        },
+        {
+            "name":"incElementalDefense",
+            "imgSrc":"Buff_Increased_Elemental_Defense.jpeg"
+        },
+        {
+            "name":"incEvasion",
+            "imgSrc":"Buff_Increased_Evasion.jpeg"
+        },
+        {
+            "name":"incPhysicalAttack",
+            "imgSrc":"Buff_Increased_Physical_Attack.jpeg"
+        },
+        {
+            "name":"incPhysicalDefence",
+            "imgSrc":"Buff_Increased_Physical_Defense.jpeg"
+        },
+        {
+            "name":"incSpeed",
+            "imgSrc":"Buff_Increased_Speed.jpeg"
+        },
+        {
+            "name":"reflectiveVeil",
+            "imgSrc":"Buff_Reflective_Veil.jpeg"
+        },
+        {
+            "name":"regenHp",
+            "imgSrc":"Buff_Regen_HP.jpeg"
+        },
+        {
+            "name":"sidestep",
+            "imgSrc":"Buff_Sidestep.jpeg"
+        }
+    ],
+    "debuffs": [
+        {
+            "name": "celIntervention",
+            "imgSrc": "Debuff_Celestial_Intervention.jpeg"
+        },
+        {
+            "name": "decAccuracy",
+            "imgSrc": "Debuff_Decreased_Accuracy.jpeg"
+        },
+        {
+            "name": "decCritical",
+            "imgSrc": "Debuff_Decreased_Critical.jpeg"
+        },
+        {
+            "name": "decElementalAttack",
+            "imgSrc": "Debuff_Decreased_Elemental_Attack.jpeg"
+        },
+        {
+            "name": "decElementalDefense",
+            "imgSrc": "Debuff_Decreased_Elemental_Defense.jpeg"
+        },
+        {
+            "name": "decEvasion",
+            "imgSrc": "Debuff_Decreased_Evasion.jpeg"
+        },
+        {
+            "name": "decPhysicalAttack",
+            "imgSrc": "Debuff_Decreased_Physical_Attack.jpeg"
+        },
+        {
+            "name": "decPhysicalDefense",
+            "imgSrc": "Debuff_Decreased_Physical_Defense.jpeg"
+        },
+        {
+            "name": "decSpeec",
+            "imgSrc": "Debuff_Decreased_Speed.jpeg"
+        },
+        {
+            "name": "legholdTrap",
+            "imgSrc": "Debuff_Leghold_Trap.jpeg"
+        },
+        {
+            "name": "toxicRainbow",
+            "imgSrc": "Debuff_Toxic_Rainbow.jpeg"
+        }
+    ],
+    "conditions": [
+        {
+            "name": "blinded",
+            "imgSrc": "Status_Blinded.jpeg"
+        },
+        {
+            "name": "confusion",
+            "imgSrc": "Status_Confusion.jpeg"
+        },
+        {
+            "name": "peerlessPoison",
+            "imgSrc": "Status_Peerless_Poison.jpeg"
+        },
+        {
+            "name": "petrified",
+            "imgSrc": "Status_Petrified.jpeg"
+        },
+        {
+            "name": "poisoned",
+            "imgSrc": "Status_Poisoned.jpeg"
+        },
+        {
+            "name": "silence",
+            "imgSrc": "Status_Silence.jpeg"
+        },
+        {
+            "name": "sleep",
+            "imgSrc": "Status_Sleep.jpeg"
+        },
+        {
+            "name": "terror",
+            "imgSrc": "Status_Terror.jpeg"
+        },
+        {
+            "name": "unconsciousness",
+            "imgSrc": "Status_Unconsciousness.jpeg"
+        }
+    ]
+}

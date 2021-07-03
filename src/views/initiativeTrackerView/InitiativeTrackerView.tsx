@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { InitativeTracker } from '../../components/InitiativeTracker/InitiativeTracker';
+import statusConditions from '../../components/StatusMarker/statusIcons.json';
 
 interface ITrackerItems {
     items: {
@@ -18,7 +19,7 @@ export const InitativeTrackerView = () => {
 
     const [trackerItems, setTrackerItems] = useState<ITrackerItems["items"]>([]);
 
-    useEffect(()=>{
+    useEffect(() => {
         setTrackerItems(
             [
                 {
@@ -39,17 +40,25 @@ export const InitativeTrackerView = () => {
                 }
             ]
         )
-    },[])
+    }, [])
 
 
     return (
-        <div className="container">
-            <div>
-                <h1>This is the tracker view!</h1>
-            </div>
-            <div>
+
+        <div className="initiative-tracker-view">
+            <div className="tracker-pos">
                 <InitativeTracker items={trackerItems} />
             </div>
+            <div className="party-bar-pos">
+                <h2>Party area</h2>
+            </div>
+            <div className="content-pos">
+                <h2>Content area</h2>
+            </div>
+            <div className="enemy-bar-pos">
+                <h2>Enemy area</h2>
+            </div>
         </div>
+
     )
 }

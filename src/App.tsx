@@ -1,7 +1,7 @@
 import './App.css';
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { paths } from './routes/paths.json';
+import { routes } from './routes/routes.json';
 import { Nav } from './nav/Nav'
 import { LabView } from './views/lab/LabView'
 import { HomeView } from './views/home/HomeView'
@@ -12,23 +12,23 @@ function App() {
     <Router>
       <div className="App">
         <Nav />
-      </div>
       
       <Switch>
 
-        <Route path={paths.lab}>
+        <Route path={routes.lab}>
           <LabView />
         </Route>
         
-        <Route path={paths.initiativeTracker}>
+        <Route path={routes.initiativeTracker}>
           <InitativeTrackerView />
         </Route>
 
-        <Route path={paths.home}>
+        <Route path={routes.home}>
           <HomeView />
         </Route>
 
       </Switch>
+      </div>
     </Router>
   );
 }

@@ -1,0 +1,31 @@
+.initiative-tracker-view{
+    display: grid;
+    height: 90%;
+    width: 100%;
+    grid-template-areas: 
+        'tracker tracker tracker'
+        'party-bar info enemy-bar'
+        'party-bar info enemy-bar'
+        'party-bar info enemy-bar'
+        'party-bar info enemy-bar'
+    ;
+
+    grid-template-columns: 30% 40% 30%;
+    grid-template-rows: repeat(5, 20%);
+}
+
+.tracker-pos{
+    grid-area: tracker;
+}
+
+.party-bar-pos{
+    grid-area: party-bar;
+}
+
+.enemy-bar-pos{
+    grid-area: enemy-bar;
+}
+
+.content-pos{
+    grid-area: info;
+}
