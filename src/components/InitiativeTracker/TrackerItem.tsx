@@ -1,6 +1,5 @@
-
 import { useState } from 'react'
-import {StatusMarker} from '../StatusMarker/StatusMarker'
+import { StatusMarker } from '../StatusMarker/StatusMarker'
 
 interface ITrackerItem {
     name: string;
@@ -10,25 +9,16 @@ interface ITrackerItem {
 
 export const TrackerItem: React.FC<ITrackerItem> = ({ name, hitPoints, initiative }) => {
 
-    // TODO - Checkout http://www.dnd5eapi.co/ if it's useful
-
-    const [Inputs, setInputs] = useState({
-        Name: name,
-        HitPoints: hitPoints,
-        Initiative: initiative,
-    })
-
     const [Name, setName] = useState(name)
     const [HitPoints, setHitPoints] = useState(hitPoints)
     const [Initiative, setInitiative] = useState(initiative)
     const [StatusConditions, setStatusConditions] = useState<string[]>([])
-    const [IsActive, setIsActive] = useState(true)
     const [IsAlive, setIsAlive] = useState(true)
 
-    const renderStatusMarkers = ():JSX.Element[] => {
+    const renderStatusMarkers = (): JSX.Element[] => {
         return StatusConditions.map((crStatus) => {
             return (
-                <StatusMarker status={crStatus} small={true}/>
+                <StatusMarker status={crStatus} small={true} />
             )
         })
     }
@@ -36,8 +26,8 @@ export const TrackerItem: React.FC<ITrackerItem> = ({ name, hitPoints, initiativ
     return (
         <>
             <div className="tracker-item-container">
-                <div className={IsActive ? "tracker-item-active" : "tracker-item-not-active"}>
-                    <div> 
+                <div className="tracker-item">
+                    <div>
                         <span>
                             Init: {Initiative}
                         </span>
@@ -51,8 +41,8 @@ export const TrackerItem: React.FC<ITrackerItem> = ({ name, hitPoints, initiativ
                         {renderStatusMarkers()}
                     </div>
                     <div>
-                        <div>
-                            HP: {HitPoints}
+                        <div className="w100">
+                            {`HP: ${HitPoints}`}
                         </div>
                     </div>
                 </div>

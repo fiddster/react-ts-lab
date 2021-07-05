@@ -1,7 +1,8 @@
 import { StatusMarker } from "../StatusMarker/StatusMarker";
 import { TrackerItem } from "./TrackerItem";
 import statusConditions from '../StatusMarker/statusIcons.json';
-import { useState } from "react";
+import { Component, createRef, useEffect, useRef, useState } from "react";
+import styled from "styled-components";
 
 interface ITrackerItems {
     items: {
@@ -22,30 +23,56 @@ interface ITrackerItems {
 export const InitativeTracker: React.FC<ITrackerItems> = ({ items }) => {
 
     const [Index, setIndex] = useState(0)
-
     const [RoundNum, setRoundNum] = useState(1)
 
-    const renderItems = (): JSX.Element[] => {
-        let key = 0;
-        return items.map((item) => {
-            return (
+    interface ICarouselSlide {
+        active?: boolean;
+    }
+
+    const SCarouselSlide = styled.div<ICarouselSlide>`
+        flex: 0 0 auto;
+        opacity: ${props => (props.active ? 1 : 0)};
+        transition: all 0.5s ease;
+        width: 100%;
+    `;
+
+    const activeItem = items.map((item, i) => {
+        return (
+            <SCarouselSlide active={Index === i} key={i}>
                 <TrackerItem
-                    key={key++}
                     name={item.Name}
                     initiative={item.Initiative}
                     hitPoints={item.HitPoints}
                 />
-            )
-        })
+            </SCarouselSlide>
+        )
+    })
+
+    function updateIndex(i: number) {
+        if(i === 0){
+            setRoundNum((RoundNum + 1))
+        }
+        setIndex(i)
     }
 
     return (
-        <div>
-            <div>
+        <div className="tracker-container">
+
+            <div className="tracker-header">
                 <h2>- Round {RoundNum} -</h2>
             </div>
-            <div className="flex-row">
-                {renderItems()}
+
+            <div className="tracker-wrapper flex-row">
+                {activeItem}
+            </div>
+
+            <div className="tracker-btns-wrapper">
+                <button onClick={() => updateIndex((Index - 1 + items.length) % items.length)}>
+                    {'<'}
+                </button>
+                <button onClick={() => updateIndex((Index + 1) % items.length)}>
+                    {'>'}
+                </button>
             </div>
         </div>
 

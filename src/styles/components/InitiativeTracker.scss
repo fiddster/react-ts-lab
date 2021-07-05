@@ -1,0 +1,42 @@
+.tracker-container {
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.tracker-header {
+    text-align: center;
+}
+
+.tracker-wrapper {
+    overflow-x: scroll;
+    -ms-overflow-style: scroll;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.tracker-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+
+.tracker-btns-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.tracker-item-container {
+    font-size: larger;
+    text-align: center;
+    margin: 0 4rem;
+    width: 100%;
+    display: inline;
+}
+
+.tracker-item-active {
+}
+
+.tracker-item-not-active {
+}
+
+.w100{
+    width: 100%;
+}
