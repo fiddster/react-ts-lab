@@ -10,7 +10,7 @@
         'party-bar info enemy-bar'
     ;
 
-    grid-template-columns: 30% 40% 30%;
+    grid-template-columns: 25% 50% 25%;
     grid-template-rows: repeat(5, 20%);
 }
 
@@ -18,14 +18,31 @@
     grid-area: tracker;
 }
 
+.party-bar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .party-bar-pos{
     grid-area: party-bar;
+    justify-content: end;
 }
 
 .enemy-bar-pos{
     grid-area: enemy-bar;
+    justify-content: start;
 }
 
 .content-pos{
     grid-area: info;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.context-display{
+    width: 100%;
+    height: 100%;
 }
