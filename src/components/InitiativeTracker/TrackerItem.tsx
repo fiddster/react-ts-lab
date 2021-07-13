@@ -1,11 +1,6 @@
 import { useState } from 'react'
 import { StatusMarker } from '../StatusMarker/StatusMarker'
-
-interface ITrackerItem {
-    name: string;
-    hitPoints: number;
-    initiative: number;
-}
+import { ITrackerItem } from './InitiativeTrackerInterfaces'
 
 export const TrackerItem: React.FC<ITrackerItem> = ({ name, hitPoints, initiative }) => {
 

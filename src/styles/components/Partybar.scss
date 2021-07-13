@@ -1,0 +1,19 @@
+
+.partybar{
+    overflow: auto;
+    height: 100%;
+}
+
+.partybar-item{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #a82315;
+
+    .partybar-item-header{
+        background-color: #a82315;
+        color: whitesmoke;
+        width: 100%;
+    }
+}

@@ -1,25 +1,9 @@
-import { StatusMarker } from "../StatusMarker/StatusMarker";
 import { TrackerItem } from "./TrackerItem";
-import statusConditions from '../StatusMarker/statusIcons.json';
-import { Component, createRef, useEffect, useRef, useState } from "react";
-import styled from "styled-components";
+import { useState } from "react";
 import Carousel from "../Generic/Carousel/Carousel";
+import { ITrackerItem } from "./InitiativeTrackerInterfaces";
 
-interface ITrackerItems {
-    items: {
-        Name: string
-        HitPoints: number
-        Initiative: number
-    }[]
-}
-
-// TODO - v2
-// interface IStatusCondition {
-//     name: string
-//     imgSrc: string
-// }
-
-export const InitativeTracker: React.FC<ITrackerItems> = ({ items }) => {
+export const InitativeTracker = ({items}: {items: ITrackerItem[]}) => {
 
     const [Index, setIndex] = useState(0)
     const [RoundNum, setRoundNum] = useState(1)
@@ -38,18 +22,24 @@ export const InitativeTracker: React.FC<ITrackerItems> = ({ items }) => {
                 <h2>- Round {RoundNum} -</h2>
             </div>
 
-            <Carousel>
-                {items.map((item, i) => {
-                    return (
-                        <TrackerItem
-                            key={i}
-                            name={item.Name}
-                            initiative={item.Initiative}
-                            hitPoints={item.HitPoints}
-                        />
-                    )
-                })}
-            </Carousel>
+            {
+                Array.isArray(items) ?
+                    <Carousel>
+                        {
+                            items.map((item, i) => {
+                                return (
+                                    <TrackerItem
+                                        key={i}
+                                        name={item.name}
+                                        initiative={item.initiative}
+                                        hitPoints={item.hitPoints}
+                                    />
+                                )
+                            })
+                        }
+                    </Carousel>
+                    : <div></div>
+            }
         </div>
 
     )

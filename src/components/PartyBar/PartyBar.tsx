@@ -1,40 +1,24 @@
-import { Counter } from "../Generic/Counter/Counter"
+import { IPartyBarItem } from "./PartyBarInterfaces"
+import { PartyBarItem } from "./PartyBarItem"
 
-interface IPartyBarItem {
-    name: string
-    hitPoints: number
-    slug?: string // TODO - make use of the api and load data using this slug
+interface PartyBarProps{
+    items: Array<IPartyBarItem>;
 }
 
-const PartyBarItem: React.FC<IPartyBarItem> = ({ name, hitPoints, slug }) => {
-
+export const PartyBar: React.FC<PartyBarProps> = ({items}) => {
     return (
-        <div>
-            <strong>{name}</strong>
-            <Counter label={'HP'} startValue={hitPoints} />
-        </div>
-    )
-
-}
-
-interface IPartyBar {
-    items: {
-        name: string
-        hitPoints: number
-        slug?: string
-    }[]
-}
-
-export const PartyBar: React.FC<IPartyBar> = ({ items }) => {
-    return (
-        <div>
+        <div className="partybar">
             {
                 items.map((item, i) => {
-                    <PartyBarItem key={i}
-                        name={item.name}
-                        hitPoints={item.hitPoints}
-                        slug={item.slug}
-                    />
+                    return (
+                        <PartyBarItem 
+                            key={i}
+                            name={item.name}
+                            hitPoints={item.hitPoints}
+                            slug={item.slug}
+                            characterSheetIdentifier={item.characterSheetIdentifier}
+                        />
+                    )
                 })
             }
         </div>

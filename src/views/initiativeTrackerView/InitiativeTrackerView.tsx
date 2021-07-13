@@ -1,60 +1,40 @@
-import { useState, useEffect } from 'react'
-import { Counter } from '../../components/Generic/Counter/Counter';
+import { useState } from 'react'
 import { InitativeTracker } from '../../components/InitiativeTracker/InitiativeTracker';
-import { PartyBar } from '../../components/PartyBar/PartyBar';
-
-interface ITrackerItems {
-    items: {
-        Name: string
-        HitPoints: number
-        Initiative: number
-    }[]
-}
-
-interface IPartyBarItem {
-    name: string
-    hitPoints: number
-    slug?: string // TODO - make use of the api and load data using this slug
-}
+import { ITrackerItem } from '../../components/InitiativeTracker/InitiativeTrackerInterfaces';
+import { EnemyPartybar } from '../../components/PartyBar/EnemyPartybar';
+import { EnemyPartybarContext, PartybarContext } from '../../components/PartyBar/PartyBarContext';
+import { IPartyBarItem } from '../../components/PartyBar/PartyBarInterfaces';
+import { PcPartybar } from '../../components/PartyBar/PcPartybar';
 
 // TODO - Rename to "EncounterView"?
 
 export const InitativeTrackerView = () => {
 
-    const [trackerItems, setTrackerItems] = useState<ITrackerItems["items"]>([]);
-    const [partyMembers, setPartyMembers] = useState<IPartyBarItem[]>([])
-    const [enemyPartyMembers, setEnemyPartyMembers] = useState<IPartyBarItem[]>([])
+    const [PartyMembers, setPartyMembers] = useState(new Array<IPartyBarItem>())
+    const [EnemyPartyMembers, setEnemyPartyMembers] = useState(new Array<IPartyBarItem>())
 
-    // function addSelectableEventListener(type:string, selector:string, callback:CallableFunction){
-    //     document.addEventListener(type, e => {
-    //         if(e.target?.matches(selector)){
-    //             callback(e)
-    //         }
-    //     })
-    // }
+    const [trackerItems, setTrackerItems] = useState(new Array<ITrackerItem>())
 
     return (
 
-        <div className="initiative-tracker-view">
-            <div className="tracker-pos">
-                <InitativeTracker items={trackerItems} />
-            </div>
-            <div className="party-bar-pos">
-                <h2 className="text-center">Party area</h2>
+        <PartybarContext.Provider value={{ PartyMembers, setPartyMembers }}>
+            <EnemyPartybarContext.Provider value={{ EnemyPartyMembers, setEnemyPartyMembers }}>
 
-                <PartyBar items={partyMembers} />
-            </div>
-            <div className="content-pos">
-                <h2>Content area</h2>
-
-                <iframe className="context-display" src="https://open5e.com/monsters/monster-list" />
-                
-            </div>
-            <div className="enemy-bar-pos">
-                <h2 className="text-center">Enemy area</h2>
-                <PartyBar items={enemyPartyMembers} />
-            </div>
-        </div>
-
+                <div className="initiative-tracker-view">
+                    <div className="tracker-pos">
+                        <InitativeTracker items={trackerItems} />
+                    </div>
+                    <div className="party-bar-pos">
+                        <PcPartybar />
+                    </div>
+                    <div className="content-pos">
+                        <iframe className="context-display" src="https://open5e.com/monsters/monster-list" />
+                    </div>
+                    <div className="enemy-bar-pos">
+                        <EnemyPartybar />
+                    </div>
+                </div>
+            </EnemyPartybarContext.Provider>
+        </PartybarContext.Provider>
     )
 }

@@ -16,7 +16,7 @@ const ButtonWrapper = styled.div`
 interface ICounter {
     label: string
     startValue?: number
-    type?: string
+    type?: string // use for big, default, smal
 }
 
 export const Counter: React.FC<ICounter> = ({ label, type, startValue, }) => {

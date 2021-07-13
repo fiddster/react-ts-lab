@@ -1,3 +1,4 @@
+
 .initiative-tracker-view{
     display: grid;
     height: 90%;
@@ -8,30 +9,34 @@
         'party-bar info enemy-bar'
         'party-bar info enemy-bar'
         'party-bar info enemy-bar'
+        'party-bar info enemy-bar'
+        'party-bar info enemy-bar'
+        'party-bar info enemy-bar'
+        'party-bar info enemy-bar'
+        'party-bar info enemy-bar'
     ;
 
-    grid-template-columns: 25% 50% 25%;
-    grid-template-rows: repeat(5, 20%);
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: repeat(1fr, 10);
+    column-gap: 10px;
+    row-gap: 10px;
 }
 
 .tracker-pos{
     grid-area: tracker;
-}
-
-.party-bar{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    height: 100%;
 }
 
 .party-bar-pos{
     grid-area: party-bar;
     justify-content: end;
+    height: 100%;
 }
 
 .enemy-bar-pos{
     grid-area: enemy-bar;
     justify-content: start;
+    height: 100%;
 }
 
 .content-pos{
@@ -40,6 +45,7 @@
     width: 100%;
     flex-direction: column;
     align-items: center;
+    height: 100%;
 }
 
 .context-display{
