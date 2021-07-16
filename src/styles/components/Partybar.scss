@@ -1,7 +1,22 @@
 
-.partybar{
-    overflow: auto;
+.party-container{
     height: 100%;
+
+}
+
+.partybar-buttons{
+    background-color: $color-background;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.partybar-items{
+    height: 90%;
+    overflow-y: scroll;
 }
 
 .partybar-item{
@@ -9,11 +24,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid #a82315;
+    border: 1px solid $color-maroon;
 
     .partybar-item-header{
-        background-color: #a82315;
-        color: whitesmoke;
+        background-color: $color-maroon;
+        color: $color-text-primary;
         width: 100%;
+        display: flex;
+        justify-content: space-between;
     }
 }
