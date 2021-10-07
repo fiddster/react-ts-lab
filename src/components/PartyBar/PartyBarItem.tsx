@@ -16,8 +16,8 @@ export const PartyBarItem: React.FC<IPartyBarItem> = ({ team, name, hitPoints, s
         <div className="partybar-item">
             <div className="partybar-item-header">
                 <strong>{name}</strong>
-                <button className="fas fa-times" onClick={() => {removeFromParty(name)}}>
-
+                <button className="" onClick={() => {removeFromParty(name)}}>
+                    <i className="fas fa-times"></i>
                 </button>
             </div>
             <Counter label={'HP'} startValue={hitPoints} />

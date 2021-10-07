@@ -63,15 +63,15 @@ const Carousel = ({ children }: IProps) => {
                 </CarouselSlides>
             </CarouselWrapper>
             <ButtonWrapper>
-                <button onClick={() => {
+                <button className="btn tracker-iterate-button" onClick={() => {
                     setCurrentSlide((currentSlide - 1 + activeSlide.length) % activeSlide.length)
                 }}>
-                    {'<<'}
+                    <i className="fas fa-caret-square-left"></i>
                 </button>
-                <button onClick={() => {
+                <button className="btn tracker-iterate-button" onClick={() => {
                     setCurrentSlide((currentSlide + 1) % activeSlide.length)
                 }}>
-                    {'>>'}
+                    <i className="fas fa-caret-square-right"></i>
                 </button>
             </ButtonWrapper>
         </div>

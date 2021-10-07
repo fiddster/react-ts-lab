@@ -5,11 +5,12 @@
     width: 100%;
     grid-template-areas: 
         'tracker tracker tracker'
+        'party-bar tracker-buttons enemy-bar'
         'party-bar info enemy-bar'
     ;
 
     grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 15% 85%;
+    grid-template-rows: 15%  10% 75%;
     column-gap: 10px;
     row-gap: 10px;
 }
@@ -17,19 +18,28 @@
 .tracker-pos{
     grid-area: tracker;
     height: 100%;
-    border: 1px solid magenta;
+    border: 3px solid $color-background;
+}
+
+.tracker-buttons-pos{
+    grid-area: tracker-buttons;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 100%;
+    border: 3px solid $color-background;
 }
 
 .party-bar-pos{
     grid-area: party-bar;
     height: 100%;
-    border: 1px solid magenta;
+    border: 3px solid $color-background;
 }
 
 .enemy-bar-pos{
     grid-area: enemy-bar;
     height: 100%;
-    border: 1px solid magenta;
+    border: 3px solid $color-background;
 }
 
 .content-pos{
@@ -39,7 +49,7 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    border: 1px solid magenta;
+    border: 3px solid $color-background;
 }
 
 .context-display{
