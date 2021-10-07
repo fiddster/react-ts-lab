@@ -19,6 +19,12 @@ export const InitativeTrackerView = () => {
         //TODO - open modal with form for adding creature
     }
 
+    let partyMember: IPartyBarItem = {
+        team: Math.random() < 0.5 ? TeamTag.PC : TeamTag.Enemy,
+        name: 'Test Creature',
+        hitPoints: 25
+    }
+
     const AddPartyMember = (newItem: IPartyBarItem) => {
         //TODO - handle newItem.team (PC or Enemy)
         let items = [...PartyMembers]
