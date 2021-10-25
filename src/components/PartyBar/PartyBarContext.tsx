@@ -6,7 +6,6 @@ export type PartybarContextType = {
     setPartyMembers: (PartyMembers: IPartyBarItem[]) => void;
 }
 
-
 export const PartybarContext = createContext<PartybarContextType>(
     {
         PartyMembers: new Array<IPartyBarItem>(),

@@ -1,9 +1,12 @@
 import { useState } from 'react'
+import { Button } from 'react-bootstrap';
+import Modal from 'react-bootstrap/Modal'
 import { InitativeTracker } from '../../components/InitiativeTracker/InitiativeTracker';
 import { ITrackerItem } from '../../components/InitiativeTracker/InitiativeTrackerInterfaces';
 import { PartyBar } from '../../components/PartyBar/PartyBar';
 import { PartybarContext } from '../../components/PartyBar/PartyBarContext';
 import { IPartyBarItem, TeamTag } from '../../components/PartyBar/PartyBarInterfaces';
+import { AddCreatureForm } from './AddCreatureForm';
 
 
 // TODO - Rename to "EncounterView"?
@@ -11,8 +14,9 @@ import { IPartyBarItem, TeamTag } from '../../components/PartyBar/PartyBarInterf
 export const InitativeTrackerView = () => {
 
     const [PartyMembers, setPartyMembers] = useState(new Array<IPartyBarItem>())
-
     const [TrackerItems, setTrackerItems] = useState(new Array<ITrackerItem>())
+
+    const [ShowAddCreatureForm, setShowAddCreatureForm] = useState(false)
 
     const handleAddCreature = () => {
         alert('Not implemented')
@@ -25,8 +29,17 @@ export const InitativeTrackerView = () => {
         hitPoints: 25
     }
 
+    const OnCloseAddCreatureForm = (e:any) => {
+        console.log(`e`, e)
+        debugger
+        if(e.target.value === "save"){
+
+        }
+        setShowAddCreatureForm(false)
+    }
+
     const AddPartyMember = (newItem: IPartyBarItem) => {
-        //TODO - handle newItem.team (PC or Enemy)
+
         let items = [...PartyMembers]
         let counter = 1;
         items.forEach((item) => {
@@ -52,16 +65,16 @@ export const InitativeTrackerView = () => {
         setPartyMembers([...items])
     }
 
-    const handleStart = () => {
+    const handleStartEncounter = () => {
         alert('Not implemented')
         //TODO - initiative roll for all partyItems
         //TODO - manual input for players?
     }
 
-    const handleEnd = () => {
+    const handleEndEncounter = () => {
         alert('Not implemented')
         //TODO - remove all items from trackerItems
-        //TODO - clear all initiative rolls from all enteties
+        //TODO - clear all initiative rolls from all entities
         //TODO - clear all enemies from PartyMembers? prompt maybe?
     }
 
@@ -73,13 +86,13 @@ export const InitativeTrackerView = () => {
                     <InitativeTracker items={TrackerItems} />
                 </div>
                 <div className="tracker-buttons-pos">
-                    <button className="btn" onClick={() => handleAddCreature()}>
-                        <span>Add Creature</span>
-                    </button>
-                    <button className="btn" onClick={() => handleStart()}>
+                    
+                    <AddCreatureForm />
+
+                    <button className="btn" onClick={() => handleStartEncounter()}>
                         <span> Start Encounter</span>
                     </button>
-                    <button className="btn" onClick={() => handleEnd()}>
+                    <button className="btn" onClick={() => handleEndEncounter()}>
                         <span> End Encounter</span>
                     </button>
                 </div>
@@ -93,6 +106,7 @@ export const InitativeTrackerView = () => {
                     <PartyBar partyTeam={TeamTag.Enemy} />
                 </div>
             </div>
+
         </PartybarContext.Provider>
     )
 }
