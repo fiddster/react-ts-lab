@@ -15,10 +15,16 @@ export const AddCreatureModal = () => {
 
     const addCreatures = (creatures:IPartyBarItem[]) => {
         let items = [...Creatures]
+
         creatures.forEach(creature => {
             
             let counter = 1;
+            let id = 0;
             items.forEach((item) => {
+                if(id < item.id){
+                    id = item.id
+                }
+
                 if (item.creatureName.includes(creature.creatureName)) {
                     let name = item.creatureName
                     let indexOf = name.indexOf('#')
@@ -32,8 +38,9 @@ export const AddCreatureModal = () => {
                     }
                 }
             })
+
             creature.creatureName = counter != 1 ? `${creature.creatureName} #${counter}` : `${creature.creatureName}`
-            creature.id = items.length +1
+            creature.id = ++id
             items.push(creature)
         });
 

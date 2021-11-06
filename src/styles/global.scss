@@ -12,3 +12,8 @@ body{
 .text-center{
     text-align: center;
 }
+
+.text-error{
+    font-family: 'roboto';
+    color: $color-text-error;
+}

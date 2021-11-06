@@ -30,7 +30,7 @@ interface Props {
     onCancel: () => void
 }
 
-export const AddCreatureForm: React.FC<Props> = ({onCancel, onSubmit}) => {
+export const AddCreatureForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
     const initialValues: ICreatureForm = {
         team: TeamTag.Enemy,
         creatureName: "",
@@ -39,10 +39,10 @@ export const AddCreatureForm: React.FC<Props> = ({onCancel, onSubmit}) => {
         copies: 1
     }
 
-    function beforeSubmit(values:ICreatureForm):ICreatureForm{
-        let form:ICreatureForm = {
+    function beforeSubmit(values: ICreatureForm): ICreatureForm {
+        let form: ICreatureForm = {
             team: values.team,
-            creatureName: toTitleCase(values.creatureName),
+            creatureName: toTitleCase(values.creatureName.trim()),
             hitPoints: values.hitPoints,
             initiativeModifier: values.team === TeamTag.Enemy ? values.initiativeModifier : 0,
             copies: values.copies
@@ -55,46 +55,41 @@ export const AddCreatureForm: React.FC<Props> = ({onCancel, onSubmit}) => {
         <Formik
             initialValues={initialValues}
             validationSchema={CreatureSchema}
-            onSubmit={(values, actions) => {
+            onSubmit={(values) => {
                 onSubmit(beforeSubmit(values))
             }}
         >
-            {({ values, errors, touched, isSubmitting }) => (
+            {({ values, errors, touched }) => (
                 <Form>
                     <Col>
-                        <Row className='mb-3'>
-                            <div>Party</div>
-                            <Row>
-                                <Col>
-                                    <label>
-                                        <Field type="radio" 
-                                            name="team" 
-                                            value={TeamTag.PC}
-                                        />
-                                        PC
-                                    </label>
-                                </Col>
-                                <Col>
-                                    <label>
-                                        <Field type="radio" 
-                                            name="team"
-                                            value={TeamTag.Enemy}
-                                        />
-                                        Enemy
-                                    </label>
-                                </Col>
-                            </Row>
+                        <Row className='mb-3 justify-evenly'>
+                            <label>
+                                <Field
+                                    name="team"
+                                    type="radio"
+                                    value={TeamTag.PC}
+                                />
+                                Player
+                            </label>
+                            <label>
+                                <Field
+                                    name="team"
+                                    type="radio"
+                                    value={TeamTag.Enemy}
+                                />
+                                Enemy
+                            </label>
                         </Row>
                         <Row>
                             <Col>
                                 <label htmlFor='creatureName'>Name</label>
                             </Col>
                             <Col>
-                                <Field type="text" id="creatureName" name="creatureName"/>
+                                <Field type="text" id="creatureName" name="creatureName" />
                             </Col>
                             <Col>
                                 {errors.creatureName && touched.creatureName ? (
-                                    <div>{errors.creatureName}</div>
+                                    <div className='text-error'>{errors.creatureName}</div>
                                 ) : null}
                             </Col>
                         </Row>
@@ -104,7 +99,7 @@ export const AddCreatureForm: React.FC<Props> = ({onCancel, onSubmit}) => {
                                 <label htmlFor='hitPoints'>HP</label>
                             </Col>
                             <Col>
-                                <Field id="hitPoints" name="hitPoints" type="number"/>
+                                <Field id="hitPoints" name="hitPoints" type="number" max="9999"/>
                             </Col>
                             <Col></Col>
                         </Row>
@@ -128,7 +123,7 @@ export const AddCreatureForm: React.FC<Props> = ({onCancel, onSubmit}) => {
                                 <label htmlFor='copies'>Copies</label>
                             </Col>
                             <Col>
-                                <Field id="copies" name="copies" 
+                                <Field id="copies" name="copies"
                                     type="number"
                                     min="1"
                                     max="10"
@@ -136,13 +131,13 @@ export const AddCreatureForm: React.FC<Props> = ({onCancel, onSubmit}) => {
                             </Col>
                             <Col>
                                 {errors.copies && touched.copies ? (
-                                    <div>{errors.copies}</div>
+                                    <div className='text-error'>{errors.copies}</div>
                                 ) : null}
                             </Col>
                         </Row>
 
                         <Row>
-                            <hr/>
+                            <hr />
                             <div className='flex-row justify-between'>
                                 <Button variant="btn" onClick={onCancel}>
                                     Cancel

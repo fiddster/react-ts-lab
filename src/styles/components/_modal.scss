@@ -5,5 +5,9 @@
     *>input{
         font-family: 'roboto';
         color: black;
+        width: 100%;
+    }
+    *>label>input{
+        width: max-content;
     }
 }
