@@ -6,14 +6,8 @@
 //     }[]
 // }
 
-export interface ITrackerItem {
+interface ITrackerItem {
     name: string;
     hitPoints: number;
     initiative: number;
 }
-
-// TODO - v2
-// interface IStatusCondition {
-//     name: string
-//     imgSrc: string
-// }

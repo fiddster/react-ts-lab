@@ -7,11 +7,17 @@
 .flex-row {
     display: flex;
     flex-direction: row;
+    &.reversed{
+        flex-direction: row-reverse;
+    }
 }
 
 .flex-col {
     display: flex;
     flex-direction: column;
+    &.reversed{
+        flex-direction: column-reverse;
+    }
 }
 
 .align-center {

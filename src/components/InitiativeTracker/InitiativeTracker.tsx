@@ -1,7 +1,6 @@
 import { TrackerItem } from "./TrackerItem";
 import { useState } from "react";
 import Carousel from "../Generic/Carousel/Carousel";
-import { ITrackerItem } from "./InitiativeTrackerInterfaces";
 
 export const InitativeTracker = ({items}: {items: ITrackerItem[]}) => {
 

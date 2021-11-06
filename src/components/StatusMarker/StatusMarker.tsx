@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import statusIcons from './statusIcons.json';
 
-const iconsPath = process.env.PUBLIC_URL + '/icons/'
+const iconsPath = './icons/'
 const buffPath = iconsPath + 'buff-icons/'
 const debuffPath = iconsPath + 'debuff-icons/'
 const statusPath = iconsPath + 'status-icons/'
@@ -14,8 +14,8 @@ interface IStatusMarker {
 export const StatusMarker: React.FC<IStatusMarker> = ({ status, small }) => {
 
     const [Status] = useState(status)
-    const [Small] = useState(small)
     const [StatusImgSrc, setStatusImgSrc] = useState("")
+    const classList = !!small ? "status-marker small" : "status-marker"
 
     useEffect(() => {
         
@@ -49,7 +49,7 @@ export const StatusMarker: React.FC<IStatusMarker> = ({ status, small }) => {
 
     return (
         <>
-            <img className={Small !== undefined && Small ? "status-marker-small" : "status-marker"} 
+            <img className={classList}
                 src={StatusImgSrc} 
                 alt={Status}     
             />

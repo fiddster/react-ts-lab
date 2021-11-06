@@ -1,26 +1,25 @@
+import { useDispatch } from "react-redux"
+import { removeCreature } from "../../redux/reducers/encounterReducer"
 import { Counter } from "../Generic/Counter/Counter"
-import { usePartybarContext } from "./PartyBarContext"
-import { IPartyBarItem } from "./PartyBarInterfaces"
 
-export const PartyBarItem: React.FC<IPartyBarItem> = ({ team, name, hitPoints, slug, characterSheetIdentifier }) => {
+export const PartyBarItem: React.FC<IPartyBarItem> = (creature: IPartyBarItem) => {
+    const dispatch = useDispatch()
 
-    const {PartyMembers, setPartyMembers} = usePartybarContext()
+    // TODO - test this component
 
-    const removeFromParty = (name:string) => {
-        var members = PartyMembers
-        members = members.filter(item => item.name !== name)
-        setPartyMembers(members)
+    const removeFromParty = (id:number) => {
+        dispatch(removeCreature(id))
     }
 
     return (
         <div className="partybar-item">
             <div className="partybar-item-header">
-                <strong>{name}</strong>
-                <button className="" onClick={() => {removeFromParty(name)}}>
+                <strong>{creature.creatureName}</strong>
+                <button className="" onClick={() => {removeFromParty(creature.id)}}>
                     <i className="fas fa-times"></i>
                 </button>
             </div>
-            <Counter label={'HP'} startValue={hitPoints} />
+            <Counter label={'HP'} startValue={creature.hitPoints} />
         </div>
     )
 }

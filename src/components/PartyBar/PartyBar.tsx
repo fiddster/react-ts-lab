@@ -1,5 +1,5 @@
-import { usePartybarContext } from "./PartyBarContext";
-import { IPartyBarItem, TeamTag } from "./PartyBarInterfaces"
+import { useAppSelector } from "../../redux/store";
+import { TeamTag } from "../../types/enums/PartyBarItemEnums";
 import { PartyBarItem } from "./PartyBarItem"
 
 interface PartyBarProps {
@@ -8,13 +8,7 @@ interface PartyBarProps {
 
 export const PartyBar: React.FC<PartyBarProps> = ({ partyTeam }) => {
 
-    const { PartyMembers, setPartyMembers } = usePartybarContext();
-
-    let partyMember: IPartyBarItem = {
-        team: partyTeam,
-        name: partyTeam == TeamTag.PC ? 'Kalle' : 'Anka',
-        hitPoints: 25
-    }
+    const PartyMembers = useAppSelector(state => state.encounter.creatures)
 
     return (
         <div className="party-container">
@@ -25,8 +19,9 @@ export const PartyBar: React.FC<PartyBarProps> = ({ partyTeam }) => {
                     return (
                         <PartyBarItem
                             key={i}
+                            id={item.id}
                             team={partyTeam}
-                            name={item.name}
+                            creatureName={item.creatureName}
                             hitPoints={item.hitPoints}
                             slug={item.slug}
                             characterSheetIdentifier={item.characterSheetIdentifier}

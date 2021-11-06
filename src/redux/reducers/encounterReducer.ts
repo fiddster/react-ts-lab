@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IPartyBarItem } from '../../components/PartyBar/PartyBarInterfaces'
 import cloneDeep from 'lodash/cloneDeep';
 
 // Define a type for the slice state
@@ -12,8 +11,8 @@ const initialState: ICreatureReducerState = {
     creatures: []
 }
 
-export const counterSlice = createSlice({
-    name: 'creatures',
+export const encounterSlice = createSlice({
+    name: 'encounter',
     // `createSlice` will infer the state type from the `initialState` argument
     initialState,
 
@@ -27,12 +26,9 @@ export const counterSlice = createSlice({
         updateCreature: (state, action:PayloadAction<IPartyBarItem>) => {
             state.creatures = UpdateCreature(state.creatures, action.payload)
         },
-        removeCreature: (state, action: PayloadAction<IPartyBarItem>) => {
-            state.creatures = state.creatures.filter(c => c === action.payload)
-        },
-        clearCreatures: (state) => {
-            state.creatures = new Array<IPartyBarItem>()
-        },
+        removeCreature: (state, action: PayloadAction<number>) => {
+            state.creatures = state.creatures.filter(c => c.id !== action.payload)
+        }
     },
 })
 
@@ -41,7 +37,7 @@ function UpdateCreature(creatures:IPartyBarItem[], partyBarItem:IPartyBarItem):I
     let clones = cloneDeep(creatures)
 
     for(let c of clones){
-        if(c.name === partyBarItem.name){
+        if(c.creatureName === partyBarItem.creatureName){
             c = partyBarItem
             break
         }
@@ -50,9 +46,6 @@ function UpdateCreature(creatures:IPartyBarItem[], partyBarItem:IPartyBarItem):I
     return clones
 }
 
-export const { setCreatures, updateCreature, removeCreature, clearCreatures } = counterSlice.actions
+export const { setCreatures, addCreature, updateCreature, removeCreature } = encounterSlice.actions
 
-// Other code such as selectors can use the imported `RootState` type
-// export const selectCount = (state: RootState) => state.counter.value
-
-export default counterSlice.reducer
+export default encounterSlice.reducer
