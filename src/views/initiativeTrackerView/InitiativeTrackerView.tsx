@@ -12,13 +12,6 @@ export const InitativeTrackerView = () => {
     const Creatures = useAppSelector(state => state.encounter.creatures)
     const [TrackerItems, setTrackerItems] = useState(new Array<ITrackerItem>())
 
-    const [ShowAddCreatureForm, setShowAddCreatureForm] = useState(false)
-
-    const handleAddCreature = () => {
-        alert('Not implemented')
-        //TODO - open modal with form for adding creature
-    }
-
     const handleStartEncounter = () => {
         alert('Not implemented')
         //TODO - initiative roll for all partyItems

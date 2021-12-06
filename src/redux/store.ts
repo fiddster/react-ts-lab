@@ -1,12 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { compose, configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-import creatureReducer from './reducers/encounterReducer'
+import { reducers } from "./reducers";
 
+const composeEnhancers = compose
 
 export const store = configureStore({
-  reducer: {
-    encounter: creatureReducer
-  }
+  reducer: reducers
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

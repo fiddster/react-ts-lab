@@ -52,7 +52,7 @@ export const AddCreatureModal = () => {
     
     const handleShow = () => setShow(true);
 
-    const handleSave = (values: ICreatureForm) => {
+    const handleSubmit = (values: ICreatureForm) => {
         let creature:IPartyBarItem = {
             id: 0,
             team: values.team,
@@ -63,12 +63,12 @@ export const AddCreatureModal = () => {
 
         let creatures = new Array<IPartyBarItem>()
 
-        for (let index = 0; index < values.copies; index++) {
+        for (let index = 1; index <= values.copies; index++) {
             let copy = clone(creature)
             creatures.push(copy)
         }
         
-        dispatch(addCreatures(creatures))
+        addCreatures(creatures)
         handleClose()
     }
 
@@ -83,7 +83,7 @@ export const AddCreatureModal = () => {
                     <Modal.Title>Add Creature</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <AddCreatureForm onCancel={handleClose} onSubmit={handleSave}/>
+                    <AddCreatureForm onCancel={handleClose} onSubmit={handleSubmit}/>
                 </Modal.Body>
             </Modal>
         </>

@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { StatusMarker } from '../StatusMarker/StatusMarker'
 
-export const TrackerItem: React.FC<ITrackerItem> = ({ name, hitPoints, initiative }) => {
+export const TrackerItem: React.FC<ITrackerItem> = ({ creatureName, hitPoints, initiative }) => {
 
-    const [Name, setName] = useState(name)
+    const [Name, setName] = useState(creatureName)
     const [HitPoints, setHitPoints] = useState(hitPoints)
     const [Initiative, setInitiative] = useState(initiative)
     const [StatusConditions, setStatusConditions] = useState<string[]>([])

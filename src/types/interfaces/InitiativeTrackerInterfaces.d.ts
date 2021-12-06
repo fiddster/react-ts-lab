@@ -1,13 +1,5 @@
-// export interface ITrackerItems {
-//     items: {
-//         Name: string
-//         HitPoints: number
-//         Initiative: number
-//     }[]
-// }
-
 interface ITrackerItem {
-    name: string;
+    creatureName: string;
     hitPoints: number;
     initiative: number;
 }

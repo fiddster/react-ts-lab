@@ -29,7 +29,7 @@ export const InitativeTracker = ({items}: {items: ITrackerItem[]}) => {
                                 return (
                                     <TrackerItem
                                         key={i}
-                                        name={item.name}
+                                        creatureName={item.creatureName}
                                         initiative={item.initiative}
                                         hitPoints={item.hitPoints}
                                     />
