@@ -2,7 +2,7 @@ import { clone } from 'lodash';
 import React, { useState } from 'react'
 import { Button, Modal } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { setCreatures } from '../../../redux/reducers/encounterReducer';
+import { setCreatures } from '../../../redux/reducers/encounter';
 import { useAppSelector } from '../../../redux/store';
 import { AddCreatureForm } from './AddCreatureForm';
 

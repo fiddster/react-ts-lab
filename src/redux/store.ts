@@ -1,12 +1,24 @@
-import { compose, configureStore } from '@reduxjs/toolkit'
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-import { reducers } from "./reducers";
+import {applyMiddleware, createStore, compose} from "redux";
+import {reducers} from "./reducers";
+import {loggingMw} from "./middleware/logging";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
-const composeEnhancers = compose
+// needed for composeEnhancers
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+  }
+}
 
-export const store = configureStore({
-  reducer: reducers
-})
+// dev tool
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+export const store     = createStore(
+  reducers,
+  composeEnhancers(
+    applyMiddleware(...loggingMw),
+  )
+);
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>

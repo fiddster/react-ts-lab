@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { removeCreature } from "../../redux/reducers/encounterReducer"
+import { removeCreature } from "../../redux/reducers/encounter"
 import { Counter } from "../Generic/Counter/Counter"
 
 export const PartyBarItem: React.FC<IPartyBarItem> = (creature: IPartyBarItem) => {

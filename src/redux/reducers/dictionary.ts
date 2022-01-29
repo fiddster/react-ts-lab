@@ -1,6 +1,6 @@
 import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { cloneDeep } from "lodash"
-import { DictionaryActionTypes } from "../actionTypes/dictionary"
+import { DictionaryActionTypes } from "../actions/dictionary"
 
 interface Dictionary{
     [key:string]: any
@@ -12,11 +12,6 @@ interface DictionaryReducerState {
 
 const initialState: DictionaryReducerState = {
     items: {}
-}
-
-export namespace DictionaryActions {
-    const add = createAction<{ key: string, value:any }>(DictionaryActionTypes.add)
-    const remove = createAction<{ key: string }>(DictionaryActionTypes.remove)
 }
 
 export const dictionarySlice = createSlice({

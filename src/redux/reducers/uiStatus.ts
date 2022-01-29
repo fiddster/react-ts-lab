@@ -1,5 +1,6 @@
-import { UiStatusActionTypes } from "../actionTypes/uiStatus"
+
 import { AnyAction, createAction } from "@reduxjs/toolkit"
+import { UiStatusActionTypes } from "../actions/uiStatus"
 
 interface UiStatusItem {
     key: string
@@ -13,12 +14,6 @@ interface UiStatusReducerState {
 
 const initialState: UiStatusReducerState = {
     items: new Array<UiStatusItem>()
-}
-
-export namespace UiStatusActions {
-    const loading = createAction<{ key: string }>(UiStatusActionTypes.loading)
-    const success = createAction<{ key: string }>(UiStatusActionTypes.success)
-    const fail = createAction<{ key: string }>(UiStatusActionTypes.fail)
 }
 
 export const uiStatusReducer = (state = initialState, action: AnyAction): UiStatusReducerState => {
