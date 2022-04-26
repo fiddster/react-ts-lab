@@ -8,29 +8,29 @@ import { HomeView } from './views/home/HomeView'
 import { InitativeTrackerView } from './views/initiativeTrackerView/InitiativeTrackerView';
 
 function App() {
-  return (
-    <Router>
-      <div className="App">
-        <Nav />
-      
-      <Switch>
+    return (
+        <Router>
+            <div className="App">
+                <Nav />
 
-        <Route path={routes.lab}>
-          <LabView />
-        </Route>
-        
-        <Route path={routes.initiativeTracker}>
-          <InitativeTrackerView />
-        </Route>
+                <Switch>
 
-        <Route path={routes.home}>
-          <HomeView />
-        </Route>
+                    <Route path={routes.lab}>
+                        <LabView />
+                    </Route>
 
-      </Switch>
-      </div>
-    </Router>
-  );
+                    <Route path={routes.initiativeTracker}>
+                        <InitativeTrackerView />
+                    </Route>
+                    
+                    <Route path={routes.home}>
+                        <HomeView />
+                    </Route>
+
+                </Switch>
+            </div>
+        </Router>
+    );
 }
 
 export default App;

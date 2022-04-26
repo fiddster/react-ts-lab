@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Col, Container, Row } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { useGetSet } from 'react-use'
 import TodoContextProvider from '../../contexts/Todo/TodoContext'
@@ -30,27 +31,33 @@ export const LabView = () => {
     }
 
     return (<>
-        <div className="container">
-            Lab view works!
-            <div>
-                <input type="text" onChange={(e: any) => setKeyInput(e.target.value)} />
-                <input type="text" onChange={(e: any) => setValueInput(e.target.value)} />
-                <button onClick={addDictItem}>Submit</button>
-            </div>
-            <div>
-                <button onClick={() => { handleLoading() }}>Fetch documents</button>
-            </div>
-            <div>
-                {StatusFetchDocuments?.loading && <p>Loading</p>}
-                {
+        <Container>
+            <Row className="mb-3">
+                <Col>
+                    Lab view works!
+                    <div>
+                        <input type="text" onChange={(e: any) => setKeyInput(e.target.value)} />
+                        <input type="text" onChange={(e: any) => setValueInput(e.target.value)} />
+                        <button onClick={addDictItem}>Submit</button>
+                    </div>
+                    <div>
+                        <button onClick={() => { handleLoading() }}>Fetch documents</button>
+                    </div>
+                    <div>
+                        {StatusFetchDocuments?.loading && <p>Loading</p>}
+                        {
 
-                }
-            </div>
-        </div>
-        <div className="container">
-            <TodoContextProvider>
-                <TodoList/>
-            </TodoContextProvider>
-        </div>
+                        }
+                    </div>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <TodoContextProvider>
+                        <TodoList />
+                    </TodoContextProvider>
+                </Col>
+            </Row>
+        </Container>
     </>)
 }

@@ -34,7 +34,7 @@ export const TodoList = () => {
     }
 
     return (<>
-        <Container>
+        <Container fluid className="p-0">
             <Row>
                 <Col>
                     <Form onSubmit={handleNameSubmit} id="formChangeName">
