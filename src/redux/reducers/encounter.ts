@@ -20,10 +20,10 @@ export const encounterSlice = createSlice({
         setCreatures: (state, action: PayloadAction<IPartyBarItem[]>) => {
             state.creatures = action.payload
         },
-        addCreature: (state, action:PayloadAction<IPartyBarItem>) => {
+        addCreature: (state, action: PayloadAction<IPartyBarItem>) => {
             state.creatures = [...state.creatures, action.payload]
         },
-        updateCreature: (state, action:PayloadAction<IPartyBarItem>) => {
+        updateCreature: (state, action: PayloadAction<IPartyBarItem>) => {
             state.creatures = UpdateCreature(state.creatures, action.payload)
         },
         removeCreature: (state, action: PayloadAction<number>) => {
@@ -32,12 +32,12 @@ export const encounterSlice = createSlice({
     },
 })
 
-function UpdateCreature(creatures:IPartyBarItem[], partyBarItem:IPartyBarItem):IPartyBarItem[]{
+function UpdateCreature(creatures: IPartyBarItem[], partyBarItem: IPartyBarItem): IPartyBarItem[] {
 
     let clones = cloneDeep(creatures)
 
-    for(let c of clones){
-        if(c.creatureName === partyBarItem.creatureName){
+    for (let c of clones) {
+        if (c.id === partyBarItem.id) {
             c = partyBarItem
             break
         }

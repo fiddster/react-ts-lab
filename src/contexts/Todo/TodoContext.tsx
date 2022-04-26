@@ -1,9 +1,9 @@
-import React, { createContext, useContext, useState } from "react"
-import { ITodo, TodoContextType } from "./TodoTypes"
-
+import React, { useState } from "react"
+import { string } from "yup/lib/locale";
+import { ITodo } from "./TodoTypes"
 
 const useValue = () => {
-    const [todos, setTodos] = useState<ITodo[]>(new Array<ITodo>());
+    const [todos, setTodos] = useState(new Array<ITodo>());
 
     const addTodo = (title: string) => {
         const newTodo: ITodo = {
@@ -30,10 +30,23 @@ const useValue = () => {
         setTodos(filteredTodos)
     }
 
-    return {todos, addTodo, updateTodo, deleteTodo}
+    const [name, setName] = useState("")
+
+    const changeName = (newName:string) => {    
+        setName(newName)
+    }
+
+    return {todos, addTodo, updateTodo, deleteTodo, name, changeName}
 }
 
-export const TodoContext = React.createContext({} as ReturnType<typeof useValue>)
+export const TodoContext = React.createContext<ReturnType<typeof useValue>>({
+    todos: [], 
+    addTodo: (title: string) => {},
+    updateTodo: (id:number) => {},
+    deleteTodo: (id:number) => {},
+    name: "",
+    changeName: (newName:string) => {}
+})
 
 const TodoContextProvider: React.FC<React.ReactNode> = ({ children }) => {
 

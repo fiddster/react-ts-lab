@@ -21,19 +21,19 @@ export const uiStatusReducer = (state = initialState, action: AnyAction): UiStat
         case UiStatusActionTypes.loading: {
             return {
                 ...state,
-                items: addOrUpdate(state.items, {key:action.key, loading:true, result:undefined})
+                items: addOrUpdate(state.items, { key: action.key, loading: true, result: undefined })
             }
         }
         case UiStatusActionTypes.success: {
             return {
                 ...state,
-                items: addOrUpdate(state.items, {key:action.key, loading:false, result:true})
+                items: addOrUpdate(state.items, { key: action.key, loading: false, result: true })
             }
         }
         case UiStatusActionTypes.fail: {
             return {
                 ...state,
-                items: addOrUpdate(state.items, {key:action.key, loading:false, result:false})
+                items: addOrUpdate(state.items, { key: action.key, loading: false, result: false })
             }
         }
         default: {
@@ -49,13 +49,13 @@ function addOrUpdate(items: Array<UiStatusItem>, item: UiStatusItem): Array<UiSt
     if (foundItem) {
 
         return items.map(usi => {
-            if(usi.key === item.key){
+            if (usi.key === item.key) {
                 return item
             }
             return usi
         })
-    
-    }else {
+
+    } else {
         return [...items, item]
     }
 

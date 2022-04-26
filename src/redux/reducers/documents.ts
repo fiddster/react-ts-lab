@@ -12,12 +12,12 @@ export const documentsSlice = createSlice({
     name: 'documents',
     initialState,
     reducers: {
-        setItems: (state, action:PayloadAction<{newItems:any[]}>) => {
+        setItems: (state, action: PayloadAction<{ newItems: any[] }>) => {
             state.items = action.payload.newItems
         },
     },
 })
 
-export const { setItems} = documentsSlice.actions
+export const { setItems } = documentsSlice.actions
 
 export default documentsSlice.reducer

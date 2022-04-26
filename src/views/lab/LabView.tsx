@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useGetSet } from 'react-use'
+import TodoContextProvider from '../../contexts/Todo/TodoContext'
+import { TodoList } from '../../contexts/Todo/TodoList'
 import { setUiStatusLoading } from '../../redux/actions/uiStatus'
 import { setKeyValue } from '../../redux/reducers/dictionary'
 import { useAppSelector } from '../../redux/store'
@@ -27,7 +29,7 @@ export const LabView = () => {
         dispatch(setKeyValue({ key: getKeyInput(), value: getValueInput() }))
     }
 
-    return (
+    return (<>
         <div className="container">
             Lab view works!
             <div>
@@ -45,5 +47,10 @@ export const LabView = () => {
                 }
             </div>
         </div>
-    )
+        <div className="container">
+            <TodoContextProvider>
+                <TodoList/>
+            </TodoContextProvider>
+        </div>
+    </>)
 }
