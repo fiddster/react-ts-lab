@@ -19,12 +19,12 @@ export const dictionarySlice = createSlice({
     initialState,
     reducers: {
 
-        setKeyValue: (state, action: PayloadAction<{ key: string, value: any }>) => {
+        setKeyValue: (state = initialState, action: PayloadAction<{ key: string, value: any }>) => {
             let { key, value } = action.payload
             state.items[key] = value
         },
-        
-        removeKeyValue: (state, action: PayloadAction<{ key: string }>) => {
+
+        removeKeyValue: (state = initialState, action: PayloadAction<{ key: string }>) => {
             let copy = cloneDeep(state.items)
             delete copy[action.payload.key]
             state.items = copy

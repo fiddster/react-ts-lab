@@ -2,13 +2,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import cloneDeep from 'lodash/cloneDeep';
 
 // Define a type for the slice state
-interface ICreatureReducerState {
+export interface ICreatureReducerState {
     creatures: IPartyBarItem[]
 }
 
 // Define the initial state using that type
 const initialState: ICreatureReducerState = {
-    creatures: []
+    creatures: new Array<IPartyBarItem>()
 }
 
 export const encounterSlice = createSlice({
@@ -17,16 +17,16 @@ export const encounterSlice = createSlice({
     initialState,
 
     reducers: {
-        setCreatures: (state, action: PayloadAction<IPartyBarItem[]>) => {
+        setCreatures: (state = initialState, action: PayloadAction<IPartyBarItem[]>) => {
             state.creatures = action.payload
         },
-        addCreature: (state, action: PayloadAction<IPartyBarItem>) => {
+        addCreature: (state = initialState, action: PayloadAction<IPartyBarItem>) => {
             state.creatures = [...state.creatures, action.payload]
         },
-        updateCreature: (state, action: PayloadAction<IPartyBarItem>) => {
+        updateCreature: (state = initialState, action: PayloadAction<IPartyBarItem>) => {
             state.creatures = UpdateCreature(state.creatures, action.payload)
         },
-        removeCreature: (state, action: PayloadAction<number>) => {
+        removeCreature: (state = initialState, action: PayloadAction<number>) => {
             state.creatures = state.creatures.filter(c => c.id !== action.payload)
         }
     },

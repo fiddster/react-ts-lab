@@ -5,14 +5,14 @@ interface DocumentsReducerState {
 }
 
 const initialState: DocumentsReducerState = {
-    items: []
+    items: new Array()
 }
 
 export const documentsSlice = createSlice({
     name: 'documents',
     initialState,
     reducers: {
-        setItems: (state, action: PayloadAction<{ newItems: any[] }>) => {
+        setItems: (state = initialState, action: PayloadAction<{ newItems: any[] }>) => {
             state.items = action.payload.newItems
         },
     },
