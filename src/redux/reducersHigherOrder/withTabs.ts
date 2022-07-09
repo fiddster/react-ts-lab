@@ -63,6 +63,11 @@ const getInitialState = <T>(): WithTabsState<T> => {
 
 export const withTabs = <T>(reducer: (state: T, action: AnyAction) => T) => (state = getInitialState<T>(), action: AnyAction): WithTabsState<T> => {
     switch (action.type) {
+        case "@@INIT": {
+            return {
+                ...state
+            }
+        }
         case TabActions.AddTab:
             return {
                 ...state

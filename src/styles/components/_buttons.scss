@@ -22,4 +22,8 @@
     &:hover{
         color: $color-highlight;
     }
+    &:focus{
+    
+        box-shadow: none;
+    }
 }

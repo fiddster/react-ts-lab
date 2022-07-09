@@ -2,7 +2,7 @@ import { TrackerItem } from "./TrackerItem";
 import { useState } from "react";
 import Carousel from "../Generic/Carousel/Carousel";
 
-export const InitativeTracker = ({items}: {items: ITrackerItem[]}) => {
+export const InitativeTracker = ({ items }: { items: ITrackerItem[] }) => {
 
     const [Index, setIndex] = useState(0)
     const [RoundNum, setRoundNum] = useState(1)
@@ -40,6 +40,5 @@ export const InitativeTracker = ({items}: {items: ITrackerItem[]}) => {
                     : <div></div>
             }
         </div>
-
     )
 }

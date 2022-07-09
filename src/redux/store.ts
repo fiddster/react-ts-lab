@@ -1,7 +1,10 @@
 import { applyMiddleware, createStore, compose } from "redux";
 import { reducers } from "./reducers";
 import { loggingMw } from "./middleware/logging";
+import storage from 'redux-persist/lib/storage';
+import { persistReducer, persistStore } from 'redux-persist';
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
 
 // needed for composeEnhancers
 declare global {
@@ -13,12 +16,27 @@ declare global {
 // dev tool
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+const persistConfig = {
+    key: 'root',
+    storage
+}
+
+const persistedReducer = persistReducer(persistConfig, reducers)
+
+// export const store = configureStore({
+//     reducer: persistedReducer,
+//     devTools: process.env.NODE_ENV !== 'production',
+//     middleware:[]
+// });
+
 export const store = createStore(
-    reducers,
+    persistedReducer,
     composeEnhancers(
         applyMiddleware(...loggingMw),
     )
 );
+
+export const persistor = persistStore(store)
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>

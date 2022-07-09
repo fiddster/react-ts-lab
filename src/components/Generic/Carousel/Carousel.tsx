@@ -46,7 +46,6 @@ interface IProps {
 const Carousel = ({ children }: IProps) => {
     const [currentSlide, setCurrentSlide] = useState(0)
 
-
     const activeSlide = children.map((slide, index) => {
         return (
             <CarouselSlide active={currentSlide === index} key={index}>

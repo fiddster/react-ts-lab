@@ -41,7 +41,6 @@ function UpdateCreature(creatures: IPartyBarItem[], partyBarItem: IPartyBarItem)
             c = partyBarItem
             break
         }
-
     }
     return clones
 }

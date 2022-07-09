@@ -1,8 +1,8 @@
-import { ApiRoutes } from "../endpoints/routes"
+import { Open5eEndpoints } from "../endpoints/open5eApi"
 import axios from "../main"
 
 export const getDocuments = async () => {
-    let response = await axios.get(ApiRoutes.Documents(""))
+    let response = await axios.get(Open5eEndpoints.Documents.GetByQuery(""))
     let test = 10
 }
 

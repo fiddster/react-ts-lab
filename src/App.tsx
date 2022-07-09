@@ -1,11 +1,12 @@
 import './App.css';
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { routes } from './routes/routes.json';
+import AppRoutes from './routes/AppRoutes';
 import { Nav } from './nav/Nav'
 import { LabView } from './views/lab/LabView'
 import { HomeView } from './views/home/HomeView'
 import { InitativeTrackerView } from './views/initiativeTrackerView/InitiativeTrackerView';
+import { SpellsView } from "./views/spells/SpellsView";
 
 function App() {
     return (
@@ -15,15 +16,18 @@ function App() {
 
                 <Switch>
 
-                    <Route path={routes.lab}>
+                    <Route path={AppRoutes.lab}>
                         <LabView />
                     </Route>
 
-                    <Route path={routes.initiativeTracker}>
+                    <Route path={AppRoutes.initiativeTracker}>
                         <InitativeTrackerView />
                     </Route>
+                    <Route path={AppRoutes.spells}>
+                        <SpellsView />
+                    </Route>
                     
-                    <Route path={routes.home}>
+                    <Route path={AppRoutes.home}>
                         <HomeView />
                     </Route>
 
